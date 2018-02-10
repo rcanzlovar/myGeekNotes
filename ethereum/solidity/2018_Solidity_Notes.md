@@ -11,17 +11,20 @@ pragma solidity ^0.4.17;
 contract myContract {
     uint256 myVariable; 
     address owner;
+    
+    modifier onlyowner() {
+        require(owner == msg.sender);
+        _; 
+    }
     // must be payable if you want to send along any ether
-    function myContract () public payable {
+    function myContract ()  payable public {
         myVariable = 5;
         owner = msg.sender;
     }
     
-    function setMyVariable(uint myNewVariable) public {
+    function setMyVariable(uint myNewVariable) public onlyowner{
         // old school if then 
-        if (owner == msg.sender) {
-            myVariable = myNewVariable;
-        }
+        myVariable = myNewVariable;
     }
     
     function getMyVariable() constant public returns (uint)  {
@@ -37,6 +40,10 @@ contract myContract {
     }
     function () payable public  {
         // i don't know why i have this here
+    }
+    function kill() public {
+        require (msg.sender == owner);
+        selfdestruct(owner); //used to be suicide()
     }
     
 }
