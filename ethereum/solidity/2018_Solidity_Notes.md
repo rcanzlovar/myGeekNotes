@@ -8,18 +8,37 @@
 ```solidity
 pragma solidity ^0.4.17;
 
-contract Adoption {
-    // constructor - this code is run when you load this contract and 
-    //sets up the initial variables etc. 
-    function Adoption(uint petId) public returns (uint) {
-
-    address[16] public adopters;
-    
-    // Retrieving the adopters
-    function getAdopters() public view returns (address[16]) {
-      return adopters;
+contract myContract {
+    uint256 myVariable; 
+    address owner;
+    // must be payable if you want to send along any ether
+    function myContract () public payable {
+        myVariable = 5;
+        owner = msg.sender;
     }
-
+    
+    function setMyVariable(uint myNewVariable) public {
+        // old school if then 
+        if (owner == msg.sender) {
+            myVariable = myNewVariable;
+        }
+    }
+    
+    function getMyVariable() constant public returns (uint)  {
+        return myVariable;
+    }    
+    
+    function getMyOwner() constant public returns(address) {
+        return owner;
+    }
+    
+    function getMyContractBalance() constant public returns(uint) {
+        return this.balance;
+    }
+    function () payable public  {
+        // i don't know why i have this here
+    }
+    
 }
 ```
 
@@ -36,8 +55,11 @@ from other contracts
 * ```view``` does not change any information
 * ```pure``` doesn't change anything nor does it even touch the blockchain 
 
+## Data Types
 
-## Mappings
+- ```uint``` or ```uint256``` is a 256 bit wide unisigned integer
+- ```address``` is an ethereum address
+### Mappings
 * like an associative array 
 ```solidity
 // For a financial app, storing a uint that holds the user's account balance:
