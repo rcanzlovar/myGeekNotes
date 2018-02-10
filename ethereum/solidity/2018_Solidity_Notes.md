@@ -5,7 +5,7 @@
 
 ## Basic Contract Structure
 
-```
+```solidity
 pragma solidity ^0.4.17;
 
 contract Adoption {
@@ -26,15 +26,15 @@ contract Adoption {
 
 ## Functions
 
-- Visibility modifiers
--- ```private``` only callable by other functions inside the contract
--- ```internal``` like private but are inherited by child contracts
--- ```external``` are only called from outside the contrac
--- ```public``` are visible and callable from inside the contract as well as 
+* Visibility modifiers
+- ```private``` only callable by other functions inside the contract
+- ```internal``` like private but are inherited by child contracts
+- ```external``` are only called from outside the contrac
+- ```public``` are visible and callable from inside the contract as well as 
 from other contracts
-- State modifiers
--- ```view``` does not change any information
--- ```pure``` doesn't change anything nor does it even touch the blockchain 
+* State modifiers
+- ```view``` does not change any information
+- ```pure``` doesn't change anything nor does it even touch the blockchain 
 
 
 ## Mappings
