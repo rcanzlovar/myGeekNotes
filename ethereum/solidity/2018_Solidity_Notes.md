@@ -75,7 +75,7 @@ mapping (address => uint) public accountBalance;
 mapping (uint => string) userIdToName;
 ```
 * ```msg.sender``` is used to identify the account that called the contract
-```
+```solidity
 mapping (address => uint) favoriteNumber;
 
 function setMyNumber(uint _myNumber) public {
@@ -99,7 +99,7 @@ function whatIsMyNumber() public view returns (uint) {
 * Functions have no body - semicolon instead of body tells the compiler this is an 
 interface 
 
-```
+```solidity
 contract NumberInterface {
   function getNum(address _myAddress) public view returns (uint);
 }
